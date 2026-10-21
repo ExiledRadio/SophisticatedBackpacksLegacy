@@ -91,11 +91,13 @@ public class BaublesIntegration {
             }
         }
 
-        // Baubles already syncs a slot to watching players whenever its stack changes, which is
-        // all the worn render needs. Auto-sync would resend the stack every tick.
+        // Baubles only re-sends a slot whose stack was replaced, unless the item asks for auto-sync,
+        // which compares the stack with the copy it last sent and re-sends only when they differ.
+        // The worn render needs that: the tanks' fluid, the battery charge and the item display
+        // live in the stack's NBT, which changes in place.
         @Override
         public boolean willAutoSync(ItemStack itemstack, EntityLivingBase player) {
-            return false;
+            return true;
         }
     }
 }

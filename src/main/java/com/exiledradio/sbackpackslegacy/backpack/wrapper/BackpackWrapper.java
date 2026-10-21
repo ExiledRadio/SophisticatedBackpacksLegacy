@@ -122,6 +122,15 @@ public class BackpackWrapper implements IStorageWrapper {
         return getContents().getUpgradeHandler(getNumberOfUpgradeSlots(), this);
     }
 
+    /** Tanks, their fluid and the battery's charge show on the model: keep the stack's render info current. */
+    @Override
+    public void onUpgradeContentsChanged() {
+        if (contents != null && net.minecraftforge.fml.common.FMLCommonHandler.instance().getEffectiveSide().isServer()
+                && BackpackRenderInfo.update(backpack, getUpgradeHandler())) {
+            backpackSaveHandler.run();
+        }
+    }
+
     /** The inventory upgrades work on: this backpack, plus nested backpacks with Inception. */
     public IItemHandlerSimpleInserter getInventoryForUpgradeProcessing() {
         getInventoryHandler();

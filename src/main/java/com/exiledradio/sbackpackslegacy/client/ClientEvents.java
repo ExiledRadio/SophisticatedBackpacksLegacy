@@ -102,6 +102,13 @@ public final class ClientEvents {
     @SubscribeEvent
     public static void registerItemColors(ColorHandlerEvent.Item event) {
         event.getItemColors().registerItemColorHandler((stack, tintIndex) -> {
+            if (tintIndex == com.exiledradio.sbackpackslegacy.client.render.BackpackItemModel.TINT_LEFT_FLUID
+                    || tintIndex == com.exiledradio.sbackpackslegacy.client.render.BackpackItemModel.TINT_RIGHT_FLUID) {
+                com.exiledradio.sbackpackslegacy.backpack.wrapper.BackpackRenderInfo renderInfo = com.exiledradio.sbackpackslegacy.backpack.wrapper.BackpackRenderInfo.of(stack);
+                net.minecraftforge.fluids.Fluid fluid = tintIndex == com.exiledradio.sbackpackslegacy.client.render.BackpackItemModel.TINT_LEFT_FLUID
+                        ? renderInfo.getLeftFluid() : renderInfo.getRightFluid();
+                return fluid == null ? -1 : fluid.getColor(new net.minecraftforge.fluids.FluidStack(fluid, net.minecraftforge.fluids.Fluid.BUCKET_VOLUME));
+            }
             BackpackWrapper wrapper = CapabilityBackpackWrapper.get(stack);
             return getTint(wrapper, tintIndex);
         }, ModContent.getBackpackItems().toArray(new BackpackItem[0]));

@@ -98,6 +98,8 @@ public class BackpackLayer implements LayerRenderer<EntityLivingBase> {
         BackpackRenderInfo renderInfo = BackpackRenderInfo.of(backpack);
         MODEL.render(wrapper.getClothColor(), wrapper.getBorderColor(), ((BackpackItem) backpack.getItem()).getTier(),
                 renderInfo.hasLeftTank(), renderInfo.hasRightTank(), renderInfo.hasBattery());
+        TankRenderHelper.renderWornBatteryCharge(renderInfo);
+        TankRenderHelper.renderWornTanks(renderInfo);
         GlStateManager.enableCull();
         renderDisplayItem(backpack);
         GlStateManager.popMatrix();
