@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "RSR",
+    "SBS",
+    "RSR"
+  ],
+  "key": {
+    "B": {
+      "item": "sbackpackslegacy:upgrade_base"
+    },
+    "R": {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "string"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:filter_upgrade"
+  }
+}

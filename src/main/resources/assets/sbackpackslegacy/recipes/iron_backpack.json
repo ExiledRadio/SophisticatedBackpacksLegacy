@@ -1,0 +1,9 @@
+{
+  "type": "sbackpackslegacy:backpack_upgrade",
+  "pattern": ["MMM", "MBM", "MMM"],
+  "key": {
+    "M": {"type": "forge:ore_dict", "ore": "ingotIron"},
+    "B": {"item": "sbackpackslegacy:backpack"}
+  },
+  "result": {"item": "sbackpackslegacy:iron_backpack"}
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "sbackpackslegacy:block/backpack_base",
+  "textures": {
+    "clips": "sbackpackslegacy:block/diamond_clips"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "sbackpackslegacy:upgrade_next_tier",
+  "pattern": [
+    " D ",
+    "GVG",
+    "RRR"
+  ],
+  "key": {
+    "D": {
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
+    },
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "ingotGold"
+    },
+    "R": {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    },
+    "V": {
+      "item": "sbackpackslegacy:restock_upgrade"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:advanced_restock_upgrade"
+  }
+}

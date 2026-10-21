@@ -1,0 +1,10 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": ["SLS", "SCS", "LLL"],
+  "key": {
+    "L": {"type": "forge:ore_dict", "ore": "leather"},
+    "C": {"type": "forge:ore_dict", "ore": "chestWood"},
+    "S": {"type": "forge:ore_dict", "ore": "string"}
+  },
+  "result": {"item": "sbackpackslegacy:backpack"}
+}

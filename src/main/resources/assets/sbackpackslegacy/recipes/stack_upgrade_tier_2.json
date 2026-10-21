@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "GGG",
+    "GSG",
+    "GGG"
+  ],
+  "key": {
+    "S": {
+      "item": "sbackpackslegacy:stack_upgrade_tier_1"
+    },
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "blockGold"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:stack_upgrade_tier_2"
+  }
+}

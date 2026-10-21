@@ -1,0 +1,29 @@
+{
+  "type": "sbackpackslegacy:upgrade_next_tier",
+  "pattern": [
+    "GUG",
+    "PBS",
+    "GUG"
+  ],
+  "key": {
+    "U": {
+      "item": "minecraft:bucket"
+    },
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "blockGlass"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    },
+    "S": {
+      "item": "minecraft:sticky_piston"
+    },
+    "B": {
+      "item": "sbackpackslegacy:upgrade_base"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:pump_upgrade"
+  }
+}

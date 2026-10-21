@@ -1,0 +1,27 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " P ",
+    "SBS",
+    "RRR"
+  ],
+  "key": {
+    "B": {
+      "item": "sbackpackslegacy:upgrade_base"
+    },
+    "R": {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "string"
+    },
+    "P": {
+      "item": "minecraft:sticky_piston"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:pickup_upgrade"
+  }
+}

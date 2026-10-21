@@ -1,0 +1,23 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "CSC",
+    "SBS",
+    "CSC"
+  ],
+  "key": {
+    "B": {
+      "item": "sbackpackslegacy:upgrade_base"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "netherStar"
+    },
+    "C": {
+      "item": "minecraft:end_crystal"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:everlasting_upgrade"
+  }
+}

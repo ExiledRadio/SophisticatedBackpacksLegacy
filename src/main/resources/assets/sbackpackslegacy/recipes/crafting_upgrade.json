@@ -1,0 +1,27 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " T ",
+    "IBI",
+    " C "
+  ],
+  "key": {
+    "B": {
+      "item": "sbackpackslegacy:upgrade_base"
+    },
+    "C": {
+      "type": "forge:ore_dict",
+      "ore": "chest"
+    },
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "T": {
+      "item": "minecraft:crafting_table"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:crafting_upgrade"
+  }
+}

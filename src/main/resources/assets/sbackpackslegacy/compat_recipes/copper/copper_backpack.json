@@ -1,0 +1,21 @@
+{
+  "type": "sbackpackslegacy:backpack_upgrade",
+  "pattern": [
+    "CCC",
+    "CBC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "type": "forge:ore_dict",
+      "ore": "ingotCopper"
+    },
+    "B": {
+      "item": "sbackpackslegacy:backpack"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:copper_backpack"
+  },
+  "__comment": "Generated from Sophisticated Backpacks (c) P3pp3rF1y, GPLv3 (1.20.x branch at bafaeb5)."
+}

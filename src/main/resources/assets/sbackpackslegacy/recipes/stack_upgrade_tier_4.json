@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "NNN",
+    "NSN",
+    "NNN"
+  ],
+  "key": {
+    "S": {
+      "item": "sbackpackslegacy:stack_upgrade_tier_3"
+    },
+    "N": {
+      "type": "forge:ore_dict",
+      "ore": "netherStar"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:stack_upgrade_tier_4"
+  }
+}

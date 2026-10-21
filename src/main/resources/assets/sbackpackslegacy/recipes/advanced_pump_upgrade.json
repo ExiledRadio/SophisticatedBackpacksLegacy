@@ -1,0 +1,31 @@
+{
+  "type": "sbackpackslegacy:upgrade_next_tier",
+  "pattern": [
+    "DID",
+    "GPG",
+    "RRR"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:dispenser"
+    },
+    "D": {
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
+    },
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "ingotGold"
+    },
+    "R": {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    },
+    "P": {
+      "item": "sbackpackslegacy:pump_upgrade"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:advanced_pump_upgrade"
+  }
+}

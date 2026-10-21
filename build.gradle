@@ -1,0 +1,105 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "https://maven.minecraftforge.net/"
+        }
+        maven {
+            name = "github"
+            url = "https://github.com/juanmuscaria/maven/raw/master"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle2:[2.3-1.0.0-SNAPSHOT,)'
+    }
+}
+
+repositories {
+	flatDir {
+		dirs 'deps'
+	}
+}
+
+apply plugin: 'eclipse'
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+version = mod_version
+group = mod_group
+archivesBaseName = mod_archives_name
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+
+minecraft {
+	// Single-sourced from gradle.properties — see the ceiling note on forge_version there.
+	version = "${mc_version}-${forge_version}"
+    mappings = "stable_39"
+	runDir = "eclipse"
+
+	replace '@VERSION@', project.version
+	replaceIn 'SophisticatedBackpacksLegacy.java'
+}
+
+processResources {
+
+	// Gradle does not treat `expand` values as task inputs, so without declaring them
+	// here the task stays UP-TO-DATE across a version bump and the jar ships an
+	// mcmod.info still claiming the previous version.
+	inputs.property 'version', project.version
+	inputs.property 'mod_id', mod_id
+	inputs.property 'mod_name', mod_name
+	inputs.property 'mod_author', mod_author
+	inputs.property 'mod_description', mod_description
+	inputs.property 'mod_credits', mod_credits
+	inputs.property 'mod_url', mod_url
+	inputs.property 'mc_version', mc_version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version': project.version,
+		'mod_id': mod_id,
+		'mod_name': mod_name,
+		'mod_author': mod_author,
+		'mod_description': mod_description,
+		'mod_credits': mod_credits,
+		'mod_url': mod_url,
+		'mc_version': mc_version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+dependencies {
+	// Sophisticated Core Legacy, required. Core's copyToDependents task puts its MCP-named dev jar
+	// into deps/. Not deobfCompile: flatDir matches by file name, so it would hand ForgeGradle's
+	// deobfuscation step the SRG jar and compile against that unchanged. The dev jar is on the
+	// runClient/runServer classpath, where FML finds Core as a mod.
+	compile name: "SophisticatedCoreLegacy-${core_version}-dev"
+
+	// Soft dependencies, compiled against and never bundled. Everything that touches them is
+	// behind a Loader.isModLoaded check (or, for the JEI plugin, only ever loaded by JEI).
+	// Copy the jars into deps/ from an instance; they are not ours to commit.
+	// deobfProvided: compiled against, and deobfuscated onto the dev runtime classpath so runClient can test it.
+	deobfProvided name: 'Baubles-1.12-1.5.2'
+	compileOnly name: 'jei_1.12.2-4.16.1.1012'
+	// Core's containers carry an Inventory Tweaks API annotation; javac needs the annotation class to read them.
+	compileOnly name: 'invtweaks-api-1.64'
+}
+
+// No deployToInstance task here on purpose: the machine-wide `deployDir` in
+// ~/.gradle/gradle.properties points at one specific instance, and copying a
+// versioned jar there on every build is how duplicate-modid crashes happen.
+
+// reobfJar rewrites the jar in place, so Gradle can call it up to date after something else
+// (runServer, runClient) has rebuilt the jar with MCP names, and ship that unmapped jar.
+reobfJar.outputs.upToDateWhen { false }
+
+// The GPL text ships inside the jar, as the licence asks of anyone passing the binary on.
+jar {
+	from('LICENSE') {
+		rename { "LICENSE_${project.archivesBaseName}" }
+	}
+}

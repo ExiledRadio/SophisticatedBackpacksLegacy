@@ -1,0 +1,10 @@
+{
+  "type": "sbackpackslegacy:backpack_upgrade",
+  "pattern": ["ONO", "OBO", "OOO"],
+  "key": {
+    "O": {"type": "forge:ore_dict", "ore": "obsidian"},
+    "N": {"type": "forge:ore_dict", "ore": "netherStar"},
+    "B": {"item": "sbackpackslegacy:diamond_backpack"}
+  },
+  "result": {"item": "sbackpackslegacy:nether_star_backpack"}
+}

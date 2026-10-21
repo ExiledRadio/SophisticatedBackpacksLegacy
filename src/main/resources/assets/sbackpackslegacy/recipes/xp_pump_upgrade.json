@@ -1,0 +1,26 @@
+{
+  "type": "sbackpackslegacy:upgrade_next_tier",
+  "pattern": [
+    "RER",
+    "CPC",
+    "RER"
+  ],
+  "key": {
+    "R": {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    },
+    "E": {
+      "item": "minecraft:ender_eye"
+    },
+    "C": {
+      "item": "minecraft:experience_bottle"
+    },
+    "P": {
+      "item": "sbackpackslegacy:advanced_pump_upgrade"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:xp_pump_upgrade"
+  }
+}

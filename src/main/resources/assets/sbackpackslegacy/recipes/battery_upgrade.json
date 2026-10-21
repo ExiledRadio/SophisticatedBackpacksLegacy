@@ -1,0 +1,24 @@
+{
+  "type": "sbackpackslegacy:upgrade_next_tier",
+  "pattern": [
+    "GRG",
+    "RBR",
+    "GRG"
+  ],
+  "key": {
+    "R": {
+      "type": "forge:ore_dict",
+      "ore": "blockRedstone"
+    },
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "ingotGold"
+    },
+    "B": {
+      "item": "sbackpackslegacy:upgrade_base"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:battery_upgrade"
+  }
+}

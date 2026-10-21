@@ -1,0 +1,7 @@
+{
+  "recipes": {
+    "backpack_upgrade": "com.exiledradio.sbackpackslegacy.crafting.BackpackUpgradeRecipe$Factory",
+    "backpack_upgrade_shapeless": "com.exiledradio.sbackpackslegacy.crafting.BackpackUpgradeShapelessRecipe$Factory",
+    "upgrade_next_tier": "com.exiledradio.scorelegacy.crafting.UpgradeNextTierRecipe$Factory"
+  }
+}

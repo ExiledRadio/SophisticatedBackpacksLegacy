@@ -1,0 +1,39 @@
+{
+  "pools": [
+    {
+      "name": "main",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "sbackpackslegacy:backpack",
+          "weight": 5,
+          "entryName": "backpack"
+        },
+        {
+          "type": "item",
+          "name": "sbackpackslegacy:iron_backpack",
+          "weight": 3,
+          "entryName": "iron_backpack"
+        },
+        {
+          "type": "item",
+          "name": "sbackpackslegacy:gold_backpack",
+          "weight": 1,
+          "entryName": "gold_backpack"
+        },
+        {
+          "type": "item",
+          "name": "sbackpackslegacy:magnet_upgrade",
+          "weight": 2,
+          "entryName": "magnet_upgrade"
+        },
+        {
+          "type": "empty",
+          "weight": 89,
+          "entryName": "empty"
+        }
+      ]
+    }
+  ]
+}

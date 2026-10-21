@@ -1,0 +1,16 @@
+{
+  "type": "sbackpackslegacy:backpack_upgrade_shapeless",
+  "ingredients": [
+    {
+      "item": "sbackpackslegacy:diamond_backpack"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "ingotNetherite"
+    }
+  ],
+  "result": {
+    "item": "sbackpackslegacy:netherite_backpack"
+  },
+  "__comment": "Generated from Sophisticated Backpacks (c) P3pp3rF1y, GPLv3 (1.20.x branch at bafaeb5)."
+}

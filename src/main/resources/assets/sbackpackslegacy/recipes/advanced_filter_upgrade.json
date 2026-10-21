@@ -1,0 +1,23 @@
+{
+  "type": "sbackpackslegacy:upgrade_next_tier",
+  "pattern": [
+    "GPG",
+    "RRR"
+  ],
+  "key": {
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "ingotGold"
+    },
+    "R": {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    },
+    "P": {
+      "item": "sbackpackslegacy:filter_upgrade"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:advanced_filter_upgrade"
+  }
+}

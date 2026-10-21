@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "DDD",
+    "DSD",
+    "DDD"
+  ],
+  "key": {
+    "S": {
+      "item": "sbackpackslegacy:stack_upgrade_tier_2"
+    },
+    "D": {
+      "type": "forge:ore_dict",
+      "ore": "blockDiamond"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:stack_upgrade_tier_3"
+  }
+}

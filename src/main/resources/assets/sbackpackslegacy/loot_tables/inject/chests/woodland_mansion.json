@@ -1,0 +1,33 @@
+{
+  "pools": [
+    {
+      "name": "main",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "sbackpackslegacy:iron_backpack",
+          "weight": 4,
+          "entryName": "iron_backpack"
+        },
+        {
+          "type": "item",
+          "name": "sbackpackslegacy:gold_backpack",
+          "weight": 2,
+          "entryName": "gold_backpack"
+        },
+        {
+          "type": "item",
+          "name": "sbackpackslegacy:advanced_magnet_upgrade",
+          "weight": 2,
+          "entryName": "advanced_magnet_upgrade"
+        },
+        {
+          "type": "empty",
+          "weight": 92,
+          "entryName": "empty"
+        }
+      ]
+    }
+  ]
+}

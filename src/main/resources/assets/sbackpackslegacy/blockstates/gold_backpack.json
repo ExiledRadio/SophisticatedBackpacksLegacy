@@ -1,0 +1,68 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "sbackpackslegacy:gold_backpack/base"
+  },
+  "variants": {
+    "facing": {
+      "north": {},
+      "east": {
+        "y": 90
+      },
+      "south": {
+        "y": 180
+      },
+      "west": {
+        "y": 270
+      }
+    },
+    "left_tank": {
+      "false": {
+        "submodel": {
+          "left": {
+            "model": "sbackpackslegacy:gold_backpack/left_pouch"
+          }
+        }
+      },
+      "true": {
+        "submodel": {
+          "left": {
+            "model": "sbackpackslegacy:backpack_left_tank"
+          }
+        }
+      }
+    },
+    "right_tank": {
+      "false": {
+        "submodel": {
+          "right": {
+            "model": "sbackpackslegacy:gold_backpack/right_pouch"
+          }
+        }
+      },
+      "true": {
+        "submodel": {
+          "right": {
+            "model": "sbackpackslegacy:backpack_right_tank"
+          }
+        }
+      }
+    },
+    "battery": {
+      "false": {
+        "submodel": {
+          "front": {
+            "model": "sbackpackslegacy:gold_backpack/front_pouch"
+          }
+        }
+      },
+      "true": {
+        "submodel": {
+          "front": {
+            "model": "sbackpackslegacy:gold_backpack/battery"
+          }
+        }
+      }
+    }
+  }
+}

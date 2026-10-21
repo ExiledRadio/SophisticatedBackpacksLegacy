@@ -1,0 +1,68 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "sbackpackslegacy:netherite_backpack/base"
+  },
+  "variants": {
+    "facing": {
+      "north": {},
+      "east": {
+        "y": 90
+      },
+      "south": {
+        "y": 180
+      },
+      "west": {
+        "y": 270
+      }
+    },
+    "left_tank": {
+      "false": {
+        "submodel": {
+          "left": {
+            "model": "sbackpackslegacy:netherite_backpack/left_pouch"
+          }
+        }
+      },
+      "true": {
+        "submodel": {
+          "left": {
+            "model": "sbackpackslegacy:backpack_left_tank"
+          }
+        }
+      }
+    },
+    "right_tank": {
+      "false": {
+        "submodel": {
+          "right": {
+            "model": "sbackpackslegacy:netherite_backpack/right_pouch"
+          }
+        }
+      },
+      "true": {
+        "submodel": {
+          "right": {
+            "model": "sbackpackslegacy:backpack_right_tank"
+          }
+        }
+      }
+    },
+    "battery": {
+      "false": {
+        "submodel": {
+          "front": {
+            "model": "sbackpackslegacy:netherite_backpack/front_pouch"
+          }
+        }
+      },
+      "true": {
+        "submodel": {
+          "front": {
+            "model": "sbackpackslegacy:netherite_backpack/battery"
+          }
+        }
+      }
+    }
+  }
+}

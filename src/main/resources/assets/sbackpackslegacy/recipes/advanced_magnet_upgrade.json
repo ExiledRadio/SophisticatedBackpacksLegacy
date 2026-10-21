@@ -1,0 +1,32 @@
+{
+  "type": "sbackpackslegacy:upgrade_next_tier",
+  "pattern": [
+    "EIE",
+    "IPI",
+    "R L"
+  ],
+  "key": {
+    "E": {
+      "type": "forge:ore_dict",
+      "ore": "enderpearl"
+    },
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "R": {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    },
+    "L": {
+      "type": "forge:ore_dict",
+      "ore": "gemLapis"
+    },
+    "P": {
+      "item": "sbackpackslegacy:advanced_pickup_upgrade"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:advanced_magnet_upgrade"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "sbackpackslegacy:block/backpack_right_pouch",
+  "textures": {
+    "clips": "sbackpackslegacy:block/leather_clips"
+  }
+}

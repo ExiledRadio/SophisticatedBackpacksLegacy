@@ -1,0 +1,6 @@
+{
+  "parent": "sbackpackslegacy:block/backpack_front_pouch",
+  "textures": {
+    "clips": "sbackpackslegacy:block/nether_star_clips"
+  }
+}

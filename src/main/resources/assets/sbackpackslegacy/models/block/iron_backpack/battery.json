@@ -1,0 +1,6 @@
+{
+  "parent": "sbackpackslegacy:block/backpack_battery",
+  "textures": {
+    "clips": "sbackpackslegacy:block/iron_clips"
+  }
+}

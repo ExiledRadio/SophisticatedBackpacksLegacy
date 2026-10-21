@@ -1,0 +1,20 @@
+{
+  "type": "sbackpackslegacy:upgrade_next_tier",
+  "pattern": [
+    "GGG",
+    "GBG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "blockGlass"
+    },
+    "B": {
+      "item": "sbackpackslegacy:upgrade_base"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:tank_upgrade"
+  }
+}
