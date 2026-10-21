@@ -33,6 +33,17 @@ public final class ModContent {
         public ItemStack createIcon() {
             return new ItemStack(BackpackItem.forTier(BackpackTier.LEATHER));
         }
+
+        /** The upgrades and other items above the backpacks, each group in registration order. */
+        @net.minecraftforge.fml.relauncher.SideOnly(net.minecraftforge.fml.relauncher.Side.CLIENT)
+        @Override
+        public void displayAllRelevantItems(@Nonnull net.minecraft.util.NonNullList<ItemStack> items) {
+            super.displayAllRelevantItems(items);
+            List<ItemStack> all = new ArrayList<>(items);
+            items.clear();
+            all.stream().filter(stack -> !(stack.getItem() instanceof BackpackItem)).forEach(items::add);
+            all.stream().filter(stack -> stack.getItem() instanceof BackpackItem).forEach(items::add);
+        }
     };
 
     private static final List<BackpackItem> BACKPACK_ITEMS = new ArrayList<>();
