@@ -92,6 +92,8 @@ public final class ModUpgrades {
     public static final UpgradeContainerType<CraftingUpgradeWrapper, CraftingUpgradeContainer> CRAFTING = new UpgradeContainerType<>(CraftingUpgradeContainer::new);
     public static final UpgradeContainerType<SmeltingUpgradeWrapper, SmeltingUpgradeContainer> SMELTING = new UpgradeContainerType<>(SmeltingUpgradeContainer::new);
     public static final UpgradeContainerType<AutoSmeltingUpgradeWrapper, AutoSmeltingUpgradeContainer> AUTO_SMELTING = new UpgradeContainerType<>(AutoSmeltingUpgradeContainer::new);
+    public static final UpgradeContainerType<com.exiledradio.scorelegacy.upgrades.stonecutter.StonecutterUpgradeWrapper, com.exiledradio.scorelegacy.upgrades.stonecutter.StonecutterUpgradeContainer> STONECUTTER =
+            new UpgradeContainerType<>(com.exiledradio.scorelegacy.upgrades.stonecutter.StonecutterUpgradeContainer::new);
     public static final UpgradeContainerType<ToolSwapperUpgradeWrapper, ToolSwapperUpgradeContainer> ADVANCED_TOOL_SWAPPER = new UpgradeContainerType<>(ToolSwapperUpgradeContainer::new);
     public static final UpgradeContainerType<JukeboxUpgradeWrapper, JukeboxUpgradeContainer> JUKEBOX = new UpgradeContainerType<>(JukeboxUpgradeContainer::new);
     public static final UpgradeContainerType<TankUpgradeWrapper, TankUpgradeContainer> TANK = new UpgradeContainerType<>(TankUpgradeContainer::new);
@@ -132,6 +134,12 @@ public final class ModUpgrades {
         register(registry, new CraftingUpgradeItem("crafting_upgrade", tab), CRAFTING);
         register(registry, new SmeltingUpgradeItem("smelting_upgrade", tab, config.smelting), SMELTING);
         register(registry, new AutoSmeltingUpgradeItem("auto_smelting_upgrade", tab, config.autoSmelting), AUTO_SMELTING);
+        // From the original: listed and craftable only when a mod adds a smoker, blast furnace or stonecutter.
+        register(registry, new SmeltingUpgradeItem("smoking_upgrade", tab, config.smoking, com.exiledradio.scorelegacy.upgrades.cooking.CookingType.SMOKING), SMELTING);
+        register(registry, new AutoSmeltingUpgradeItem("auto_smoking_upgrade", tab, config.autoSmoking, com.exiledradio.scorelegacy.upgrades.cooking.CookingType.SMOKING), AUTO_SMELTING);
+        register(registry, new SmeltingUpgradeItem("blasting_upgrade", tab, config.blasting, com.exiledradio.scorelegacy.upgrades.cooking.CookingType.BLASTING), SMELTING);
+        register(registry, new AutoSmeltingUpgradeItem("auto_blasting_upgrade", tab, config.autoBlasting, com.exiledradio.scorelegacy.upgrades.cooking.CookingType.BLASTING), AUTO_SMELTING);
+        register(registry, new com.exiledradio.scorelegacy.upgrades.stonecutter.StonecutterUpgradeItem("stonecutter_upgrade", tab), STONECUTTER);
         register(registry, new ToolSwapperUpgradeItem("tool_swapper_upgrade", tab, false, false));
         register(registry, new ToolSwapperUpgradeItem("advanced_tool_swapper_upgrade", tab, true, true), ADVANCED_TOOL_SWAPPER);
         register(registry, new JukeboxUpgradeItem("jukebox_upgrade", tab), JUKEBOX);

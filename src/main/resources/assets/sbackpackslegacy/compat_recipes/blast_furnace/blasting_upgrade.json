@@ -1,0 +1,28 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "RIR",
+    "IBI",
+    "RSR"
+  ],
+  "key": {
+    "B": {
+      "item": "sbackpackslegacy:upgrade_base"
+    },
+    "R": {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    },
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "sophisticatedBlastFurnace"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:blasting_upgrade"
+  }
+}

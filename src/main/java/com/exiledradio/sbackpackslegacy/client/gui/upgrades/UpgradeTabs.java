@@ -104,6 +104,7 @@ public final class UpgradeTabs {
         UpgradeGuiManager.registerTab(ModUpgrades.CRAFTING, CraftingUpgradeTab::new);
         UpgradeGuiManager.registerTab(ModUpgrades.SMELTING, CookingUpgradeTabs.SmeltingTab::new);
         UpgradeGuiManager.registerTab(ModUpgrades.AUTO_SMELTING, CookingUpgradeTabs.AutoSmeltingTab::new);
+        UpgradeGuiManager.registerTab(ModUpgrades.STONECUTTER, com.exiledradio.scorelegacy.client.gui.upgrades.StonecutterUpgradeTab::new);
         UpgradeGuiManager.registerTab(ModUpgrades.ADVANCED_TOOL_SWAPPER, ToolSwapperUpgradeTab::new);
         UpgradeGuiManager.registerTab(ModUpgrades.JUKEBOX, JukeboxUpgradeTab::new);
         UpgradeGuiManager.registerTab(ModUpgrades.TANK, (TankUpgradeContainer container, Position p, StorageScreenBase s) -> new IOSlotsTab<>(container, p, s, "tank"));

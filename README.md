@@ -19,7 +19,7 @@ the original mod.
 
 - Curios support is replaced by Baubles (body slot).
 - The top backpack is a Nether Star backpack. The original 1.20's copper and netherite backpacks (GPL source, 1.20.x branch at bafaeb5) are listed and craftable only when another mod adds copper or netherite.
-- Stonecutter, Smoking and Blasting upgrades aren't included (those blocks don't exist in 1.12.2).
+- The Smoking, Blasting and Stonecutter upgrades (and the auto versions) are listed and craftable only when another mod adds a smoker, blast furnace or stonecutter (Future MC, VillagerBackport and others). Smoking cooks whatever smelts into food and blasting ores and whatever smelts into an ingot or gem, plus Future MC's own lists; the stonecutter shows VillagerBackport's and Future MC's stonecutter recipes.
 
 See [PLAN.md](PLAN.md) for the full porting plan.
 

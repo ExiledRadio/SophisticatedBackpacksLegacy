@@ -1,0 +1,31 @@
+{
+  "type": "sbackpackslegacy:upgrade_next_tier",
+  "pattern": [
+    "DHD",
+    "RSH",
+    "GHG"
+  ],
+  "key": {
+    "D": {
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
+    },
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "ingotGold"
+    },
+    "R": {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    },
+    "H": {
+      "item": "minecraft:hopper"
+    },
+    "S": {
+      "item": "sbackpackslegacy:blasting_upgrade"
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:auto_blasting_upgrade"
+  }
+}

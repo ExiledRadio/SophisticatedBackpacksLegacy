@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "III",
+    "ISI",
+    "TTT"
+  ],
+  "key": {
+    "S": {
+      "item": "sbackpackslegacy:smelting_upgrade"
+    },
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "T": {
+      "item": "minecraft:stone",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "sbackpackslegacy:blasting_upgrade"
+  }
+}

@@ -77,6 +77,10 @@ public class ModConfig {
         public final FilteredUpgradeConfig refill = new FilteredUpgradeConfig(6, 3);
         public final CookingUpgradeConfig smelting = new CookingUpgradeConfig();
         public final AutoCookingUpgradeConfig autoSmelting = new AutoCookingUpgradeConfig();
+        public final CookingUpgradeConfig smoking = new CookingUpgradeConfig();
+        public final AutoCookingUpgradeConfig autoSmoking = new AutoCookingUpgradeConfig();
+        public final CookingUpgradeConfig blasting = new CookingUpgradeConfig();
+        public final AutoCookingUpgradeConfig autoBlasting = new AutoCookingUpgradeConfig();
 
         public final TankUpgradeConfig tank = new TankUpgradeConfig();
         public final BatteryUpgradeConfig battery = new BatteryUpgradeConfig();
