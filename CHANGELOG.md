@@ -4,7 +4,7 @@
 
 First release of Sophisticated Backpacks Legacy, an unofficial 1.12.2 port of P3pp3rF1y's Sophisticated Backpacks (GPLv3, `1.16.x` branch).
 
-**Requires Sophisticated Core Legacy 1.2.0 or later** and Forge 14.23.5.2847 or later. Optional: Baubles (body slot), JEI/HEI.
+**Requires Sophisticated Core Legacy 1.1.0 or later** and Forge 14.23.5.2847 or later. Optional: Baubles (body slot), JEI/HEI.
 
 Contents:
 - **Five backpacks:** leather, iron, gold, diamond and Nether Star, plus a **copper** backpack when a mod adds copper and a **netherite** backpack (beside the Nether Star one) when a mod adds netherite, as in the original 1.20. Dyeable on two colours. Wear one in the chest slot or the Baubles body slot, open it with a key, or place it as a block whose upgrades keep working.
