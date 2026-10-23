@@ -332,3 +332,15 @@ item.sbackpackslegacy.copper_backpack.name=Copper Backpack
 tile.sbackpackslegacy.copper_backpack.name=Copper Backpack
 item.sbackpackslegacy.netherite_backpack.name=Netherite Backpack
 tile.sbackpackslegacy.netherite_backpack.name=Netherite Backpack
+
+# Loot buttons (Deposit to nearby chests, Merge backpacks)
+gui.sbackpackslegacy.buttons.deposit_nearby=Deposit to Nearby Chests
+gui.sbackpackslegacy.buttons.deposit_nearby.detail=Puts each item into nearby containers that already hold it\nNo-sort slots stay in the backpack
+gui.sbackpackslegacy.buttons.merge_backpacks=Merge Backpacks
+gui.sbackpackslegacy.buttons.merge_backpacks.detail=Pulls items this backpack already holds out of nearby backpacks\nplaced ones and ones worn by nearby players\nTheir no-sort slots stay where they are
+gui.sbackpackslegacy.deposit_nearby.done=Deposited %s items into %s nearby containers
+gui.sbackpackslegacy.deposit_nearby.nothing=No nearby container holds any of these items
+gui.sbackpackslegacy.deposit_nearby.no_containers=No containers nearby
+gui.sbackpackslegacy.merge_backpacks.done=Merged %s items from %s backpacks
+gui.sbackpackslegacy.merge_backpacks.nothing=Nearby backpacks have nothing this backpack holds
+gui.sbackpackslegacy.merge_backpacks.no_backpacks=No other backpacks nearby

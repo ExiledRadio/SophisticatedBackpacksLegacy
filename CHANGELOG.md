@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0 (2026-10-23)
+
+- **Deposit to Nearby Chests** button, beside sort: each item in the backpack goes into nearby containers (8 blocks by default) that already hold that item, as Quark's deposit button does. No-sort slots stay in the backpack.
+- **Merge Backpacks** button: shows while another backpack is near (8 blocks by default), placed on the ground or worn by a player standing close. It pulls the items this backpack already holds out of those backpacks, to gather loot of a kind in one place. Their no-sort slots stay where they are, other players' worn backpacks count only while `allowOpeningOtherPlayerBackpacks` is on, and merged items skip this backpack's void and compacting upgrades.
+- Both ranges are in the config (`nearbyActions`); 0 removes the button.
+
 ## 1.0.0 (2026-10-21)
 
 First release of Sophisticated Backpacks Legacy, an unofficial 1.12.2 port of P3pp3rF1y's Sophisticated Backpacks (GPLv3, `1.16.x` branch).

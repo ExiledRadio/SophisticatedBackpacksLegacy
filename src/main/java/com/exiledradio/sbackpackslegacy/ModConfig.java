@@ -49,8 +49,24 @@ public class ModConfig {
     @Config.Comment("Players can open the backpack another player is wearing by right-clicking it from behind")
     public static boolean allowOpeningOtherPlayerBackpacks = true;
 
+    @Config.Comment("The backpack screen's \"Deposit to nearby chests\" and \"Merge backpacks\" buttons")
+    public static final NearbyActions nearbyActions = new NearbyActions();
+
     @Config.Comment("Upgrade settings")
     public static final Upgrades upgrades = new Upgrades();
+
+    public static class NearbyActions {
+        @Config.Comment({"How far from the player \"Deposit to nearby chests\" reaches, in blocks. Each item goes into nearby",
+                "containers that already hold it; no-sort slots stay. 0 removes the button."})
+        @Config.RangeInt(min = 0, max = 32)
+        public int depositToNearbyChestsRange = 8;
+
+        @Config.Comment({"How close another backpack (placed, or worn by a player) must be for \"Merge backpacks\", in blocks.",
+                "Items of a kind the open backpack already holds come over; the other backpack's no-sort slots stay.",
+                "Other players' worn backpacks only count while allowOpeningOtherPlayerBackpacks is on. 0 removes the button."})
+        @Config.RangeInt(min = 0, max = 32)
+        public int mergeBackpacksRange = 8;
+    }
 
     public static class Upgrades {
         public final FilteredUpgradeConfig pickup = new FilteredUpgradeConfig(9, 3);

@@ -34,3 +34,6 @@ dist/
 # Python bytecode from the tools
 __pycache__/
 *.pyc
+
+# Screenshots and mockups for the listing, kept out of the repo
+docs/media/

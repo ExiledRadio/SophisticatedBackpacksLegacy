@@ -56,6 +56,9 @@ public class SophisticatedBackpacksLegacy {
     @Mod.EventHandler
     public void serverStarting(net.minecraftforge.fml.common.event.FMLServerStartingEvent event) {
         event.registerServerCommand(new com.exiledradio.sbackpackslegacy.command.BackpacksCommand());
+        if (Boolean.TRUE.equals(net.minecraft.launchwrapper.Launch.blackboard.get("fml.deobfuscatedEnvironment"))) {
+            event.registerServerCommand(new com.exiledradio.sbackpackslegacy.command.DevCommand());
+        }
     }
 
     @Mod.EventHandler

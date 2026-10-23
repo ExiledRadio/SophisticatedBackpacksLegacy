@@ -21,6 +21,7 @@ public final class PacketHandler {
         CHANNEL.registerMessage(RequestBackpackContentsMessage.Handler.class, RequestBackpackContentsMessage.class, id++, Side.SERVER);
         CHANNEL.registerMessage(BackpackTooltipContentsMessage.Handler.class, BackpackTooltipContentsMessage.class, id++, Side.CLIENT);
         CHANNEL.registerMessage(OtherPlayerBackpackMessage.Handler.class, OtherPlayerBackpackMessage.class, id++, Side.CLIENT);
+        CHANNEL.registerMessage(BackpackActionMessage.Handler.class, BackpackActionMessage.class, id++, Side.SERVER);
 
 
 
