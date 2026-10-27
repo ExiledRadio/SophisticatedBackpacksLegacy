@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1 (2026-10-27)
+
+- Fixed the game crashing at startup (`NoSuchMethodError: ItemStack.getItem()`). The 1.1.0 file was a development build by mistake; this one has the same content, built for normal Minecraft.
+
 ## 1.1.0 (2026-10-23)
 
 - **Deposit to Nearby Chests** button, beside sort: each item in the backpack goes into nearby containers (8 blocks by default) that already hold that item, as Quark's deposit button does. No-sort slots stay in the backpack.
