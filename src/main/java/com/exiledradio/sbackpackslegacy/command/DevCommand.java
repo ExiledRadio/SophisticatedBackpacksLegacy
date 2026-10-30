@@ -8,6 +8,10 @@ import com.exiledradio.sbackpackslegacy.backpack.BackpackItem;
 import com.exiledradio.sbackpackslegacy.backpack.BackpackTier;
 import com.exiledradio.sbackpackslegacy.backpack.BackpackTileEntity;
 import com.exiledradio.sbackpackslegacy.backpack.NearbyBackpackActions;
+import com.exiledradio.sbackpackslegacy.backpack.WornBackpack;
+import com.exiledradio.sbackpackslegacy.compat.baubles.BaublesCompat;
+import com.exiledradio.sbackpackslegacy.compat.wearables.WearablesCompat;
+import com.exiledradio.sbackpackslegacy.compat.wearables.WearablesDevCheck;
 import com.exiledradio.sbackpackslegacy.backpack.wrapper.BackpackWrapper;
 import com.exiledradio.sbackpackslegacy.common.gui.BackpackContainer;
 import com.exiledradio.sbackpackslegacy.common.gui.BackpackContext;
@@ -35,7 +39,9 @@ import net.minecraftforge.items.IItemHandler;
  * <li>{@code set x y z slot item count} fills a backpack or container slot;</li>
  * <li>{@code nosort x y z slot} makes a backpack slot a no-sort slot;</li>
  * <li>{@code deposit x y z} and {@code merge x y z}: a fake player standing at the backpack runs the button;</li>
- * <li>{@code show x y z} lists a backpack's or container's non-empty slots.</li>
+ * <li>{@code show x y z} lists a backpack's or container's non-empty slots;</li>
+ * <li>{@code worn x y z}: a fake player wears a backpack in Thut's Wearables, then in Baubles, and
+ * reports where {@link WornBackpack} finds it.</li>
  * </ul>
  */
 public class DevCommand extends CommandBase {
@@ -46,7 +52,7 @@ public class DevCommand extends CommandBase {
 
     @Override
     public String getUsage(ICommandSender sender) {
-        return "/sbackpacksdev place|show|deposit|merge <x> <y> <z> | set <x> <y> <z> <slot> <item> <count> | nosort <x> <y> <z> <slot>";
+        return "/sbackpacksdev place|show|deposit|merge|worn <x> <y> <z> | set <x> <y> <z> <slot> <item> <count> | nosort <x> <y> <z> <slot>";
     }
 
     @Override
@@ -103,6 +109,27 @@ public class DevCommand extends CommandBase {
                 reply(sender, args[0] + " done at " + pos);
                 return;
             }
+            case "worn": {
+                FakePlayer player = FakePlayerFactory.getMinecraft(world);
+                player.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+                ItemStack backpack = new ItemStack(BackpackItem.forTier(BackpackTier.LEATHER));
+                StringBuilder out = new StringBuilder("Worn:");
+                if (WearablesCompat.isLoaded()) {
+                    out.append(' ').append(WearablesDevCheck.putOnBack(player, backpack.copy()));
+                    out.append(" -> ").append(describe(WornBackpack.find(player)));
+                    WearablesDevCheck.putOnBack(player, ItemStack.EMPTY);
+                }
+                if (BaublesCompat.isLoaded()) {
+                    baubles.api.cap.IBaublesItemHandler handler = baubles.api.BaublesApi.getBaublesHandler(player);
+                    int slot = baubles.api.BaubleType.BODY.getValidSlots()[0];
+                    handler.setStackInSlot(slot, backpack.copy());
+                    out.append(" | baubles slot ").append(slot).append(" found at ").append(BaublesCompat.findBackpackSlot(player));
+                    out.append(" -> ").append(describe(WornBackpack.find(player)));
+                    handler.setStackInSlot(slot, ItemStack.EMPTY);
+                }
+                reply(sender, out.toString());
+                return;
+            }
             case "show": {
                 IItemHandler handler = handler(world, pos);
                 StringBuilder out = new StringBuilder("Show " + pos + ":");
@@ -137,6 +164,15 @@ public class DevCommand extends CommandBase {
             return tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
         }
         throw new CommandException("No inventory at " + pos);
+    }
+
+    private static String describe(WornBackpack worn) {
+        if (worn == null) {
+            return "not found";
+        }
+        BackpackContext context = worn.getContext();
+        String kind = context.getGuiId() == BackpackContext.GUI_ITEM ? BackpackContext.InventoryKind.values()[context.getX()].name() : "gui " + context.getGuiId();
+        return "found " + kind + " slot " + context.getY() + " chestSlot=" + worn.isInChestSlot();
     }
 
     private static void reply(ICommandSender sender, String text) {

@@ -84,6 +84,7 @@ dependencies {
 	// Copy the jars into deps/ from an instance; they are not ours to commit.
 	// deobfProvided: compiled against, and deobfuscated onto the dev runtime classpath so runClient can test it.
 	deobfProvided name: 'Baubles-1.12-1.5.2'
+	deobfProvided name: 'thut-wearables-1.12.2-3.2.6'
 	compileOnly name: 'jei_1.12.2-4.16.1.1012'
 	// Core's containers carry an Inventory Tweaks API annotation; javac needs the annotation class to read them.
 	compileOnly name: 'invtweaks-api-1.64'

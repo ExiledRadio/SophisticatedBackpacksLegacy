@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.2 (2026-10-30)
+
+- **BaublesEX:** a backpack worn in a BaublesEX slot now counts as worn: the open keybind, the backpack on your back, upgrades and Merge Backpacks all find it. BaublesEX lays out its slots from its config, and the backpack used to be looked for only in classic Baubles' fixed body slot.
+- **Thut's Wearables:** backpacks go in its back slot, with the same support as Baubles (open keybind, drawn on your back, upgrades keep working, others can open it from behind if allowed).
+
 ## 1.1.1 (2026-10-27)
 
 - Fixed the game crashing at startup (`NoSuchMethodError: ItemStack.getItem()`). The 1.1.0 file was a development build by mistake; this one has the same content, built for normal Minecraft.

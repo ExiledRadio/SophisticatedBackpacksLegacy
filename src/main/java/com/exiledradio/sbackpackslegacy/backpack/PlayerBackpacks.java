@@ -7,6 +7,7 @@ import com.exiledradio.sbackpackslegacy.api.CapabilityBackpackWrapper;
 import com.exiledradio.scorelegacy.api.IPickupResponseUpgrade;
 import com.exiledradio.sbackpackslegacy.backpack.wrapper.BackpackWrapper;
 import com.exiledradio.sbackpackslegacy.compat.baubles.BaublesCompat;
+import com.exiledradio.sbackpackslegacy.compat.wearables.WearablesCompat;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -16,13 +17,16 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.function.Predicate;
 
-/** Walks every backpack a player carries: worn (Baubles, chest), main inventory, offhand. */
+/** Walks every backpack a player carries: worn (Baubles, Thut's Wearables, chest), main inventory, offhand. */
 public final class PlayerBackpacks {
     private PlayerBackpacks() {}
 
     /** Calls the visitor for each backpack until it returns true. */
     public static void forEach(EntityPlayer player, Predicate<BackpackWrapper> visitor) {
-        if (BaublesCompat.isLoaded() && visit(BaublesCompat.getStack(player, BaublesCompat.getBodySlot()), visitor)) {
+        if (BaublesCompat.isLoaded() && visit(BaublesCompat.getStack(player, BaublesCompat.findBackpackSlot(player)), visitor)) {
+            return;
+        }
+        if (WearablesCompat.isLoaded() && visit(WearablesCompat.getBackStack(player), visitor)) {
             return;
         }
         for (ItemStack stack : player.inventory.armorInventory) {

@@ -20,6 +20,7 @@ public class CommonProxy {
         PacketHandler.init();
         com.exiledradio.scorelegacy.compat.jei.StorageContainerClasses.register(BackpackContainer.class);
         BaublesCompat.init();
+        com.exiledradio.sbackpackslegacy.compat.wearables.WearablesCompat.init();
     }
 
     public void init(FMLInitializationEvent event) {

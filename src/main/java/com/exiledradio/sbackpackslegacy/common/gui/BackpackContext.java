@@ -50,7 +50,8 @@ public abstract class BackpackContext {
     }
 
     public enum InventoryKind {
-        MAIN, OFFHAND, ARMOR, BAUBLE;
+        // Sent by ordinal: add new kinds at the end.
+        MAIN, OFFHAND, ARMOR, BAUBLE, WEARABLE;
 
         static InventoryKind byId(int id) {
             return id >= 0 && id < values().length ? values()[id] : MAIN;
@@ -79,6 +80,9 @@ public abstract class BackpackContext {
                     break;
                 case BAUBLE:
                     stack = BaublesCompat.getStack(player, slot);
+                    break;
+                case WEARABLE:
+                    stack = com.exiledradio.sbackpackslegacy.compat.wearables.WearablesCompat.getBackStack(player);
                     break;
                 case MAIN:
                 default:

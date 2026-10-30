@@ -25,9 +25,12 @@ public final class BaublesCompat {
         return loaded;
     }
 
-    /** Index of the body slot in the Baubles inventory, or -1 without Baubles. */
-    public static int getBodySlot() {
-        return loaded ? BaublesIntegration.getBodySlot() : -1;
+    /**
+     * The Baubles slot holding a backpack, or -1 (none, or no Baubles). Looked up rather than taken
+     * from the body slot's fixed index: BaublesEX lays its slots out from its config.
+     */
+    public static int findBackpackSlot(EntityPlayer player) {
+        return loaded ? BaublesIntegration.findBackpackSlot(player) : -1;
     }
 
     /** The stack in the given Baubles slot, or EMPTY without Baubles. */

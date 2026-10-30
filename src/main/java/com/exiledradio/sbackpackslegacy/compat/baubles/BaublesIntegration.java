@@ -23,13 +23,24 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-/** Only loaded when Baubles is present. Lets backpacks go in the Baubles body slot. */
+/**
+ * Only loaded when Baubles is present. Lets backpacks go in the Baubles body slot. Also covers
+ * BaublesEX (same mod id), which adapts this capability through its own wrapper.
+ */
 public class BaublesIntegration {
     private static final ResourceLocation BAUBLE_CAP_KEY = new ResourceLocation(SophisticatedBackpacksLegacy.MODID, "bauble");
     private static final IBauble BACKPACK_BAUBLE = new BackpackBauble();
 
-    static int getBodySlot() {
-        return BaubleType.BODY.getValidSlots()[0];
+    static int findBackpackSlot(EntityPlayer player) {
+        IBaublesItemHandler handler = BaublesApi.getBaublesHandler(player);
+        if (handler != null) {
+            for (int slot = 0; slot < handler.getSlots(); slot++) {
+                if (handler.getStackInSlot(slot).getItem() instanceof BackpackItem) {
+                    return slot;
+                }
+            }
+        }
+        return -1;
     }
 
     static ItemStack getStack(EntityPlayer player, int slot) {
