@@ -17,7 +17,7 @@ import org.apache.logging.log4j.Logger;
         modid = SophisticatedBackpacksLegacy.MODID,
         name = SophisticatedBackpacksLegacy.NAME,
         version = SophisticatedBackpacksLegacy.VERSION,
-        dependencies = "required-after:" + SophisticatedCoreLegacy.MODID + "@[1.1.0,)"
+        dependencies = "required-after:" + SophisticatedCoreLegacy.MODID + "@[1.2.0,)"
         // No acceptableRemoteVersions: backpack GUIs and upgrades sync over custom packets,
         // so client and server must both have the mod.
 )
@@ -46,7 +46,7 @@ public class SophisticatedBackpacksLegacy {
     public void preInit(FMLPreInitializationEvent event) {
         com.exiledradio.scorelegacy.util.RecipeHelper.addAlwaysCompactedSource(() -> ModConfig.upgrades.alwaysCompactedItems);
         proxy.preInit(event);
-        com.exiledradio.sbackpackslegacy.compat.BackportCoreSettings.register();
+        com.exiledradio.scorelegacy.settings.ModSettings.register(MODID, "sbackpackslegacy:backpack");
     }
 
     @Mod.EventHandler

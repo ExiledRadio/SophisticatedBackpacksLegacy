@@ -345,7 +345,7 @@ gui.sbackpackslegacy.merge_backpacks.done=Merged %s items from %s backpacks
 gui.sbackpackslegacy.merge_backpacks.nothing=Nearby backpacks have nothing this backpack holds
 gui.sbackpackslegacy.merge_backpacks.no_backpacks=No other backpacks nearby
 
-# Backport Core settings screen
+# Settings screen
 sbackpackslegacy.general.leather=Leather Backpack
 sbackpackslegacy.general.leather.tooltip=Slot counts for the leather backpack.
 sbackpackslegacy.general.leather.inventoryslotcount=Inventory slots

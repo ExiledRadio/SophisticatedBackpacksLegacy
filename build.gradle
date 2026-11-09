@@ -88,9 +88,6 @@ dependencies {
 	compileOnly name: 'jei_1.12.2-4.16.1.1012'
 	// Core's containers carry an Inventory Tweaks API annotation; javac needs the annotation class to read them.
 	compileOnly name: 'invtweaks-api-1.64'
-	// Backport Core, optional: its settings screen annotations and BackportSettings (called through reflection).
-	// Annotations whose class is missing are dropped at runtime, so the mod runs without Core.
-	compileOnly name: 'BackportCore-1.1.0-dev'
 }
 
 // No deployToInstance task here on purpose: the machine-wide `deployDir` in

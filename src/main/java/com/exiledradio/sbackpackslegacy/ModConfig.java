@@ -1,6 +1,6 @@
 package com.exiledradio.sbackpackslegacy;
 
-import com.exiledradio.backportcore.settings.Setting;
+import com.exiledradio.scorelegacy.settings.Setting;
 import net.minecraftforge.common.config.Config;
 import com.exiledradio.scorelegacy.config.AutoCookingUpgradeConfig;
 import com.exiledradio.scorelegacy.config.BatteryUpgradeConfig;
