@@ -610,3 +610,6 @@ sbackpackslegacy.general.upgrades.xppump.mendingon=Mending repair
 sbackpackslegacy.general.upgrades.xppump.mendingon.tooltip=The Experience Pump repairs Mending gear from its tank.
 sbackpackslegacy.general.upgrades.xppump.maxxppointspermending=Experience per repair
 sbackpackslegacy.general.upgrades.xppump.maxxppointspermending.tooltip=Most experience points used per repair, every 5 ticks.
+
+sbackpackslegacy.general=Backpack rules
+sbackpackslegacy.general.tooltip=Chest loot and opening other players' backpacks.
