@@ -46,6 +46,7 @@ public class SophisticatedBackpacksLegacy {
     public void preInit(FMLPreInitializationEvent event) {
         com.exiledradio.scorelegacy.util.RecipeHelper.addAlwaysCompactedSource(() -> ModConfig.upgrades.alwaysCompactedItems);
         proxy.preInit(event);
+        com.exiledradio.sbackpackslegacy.compat.BackportCoreSettings.register();
     }
 
     @Mod.EventHandler
