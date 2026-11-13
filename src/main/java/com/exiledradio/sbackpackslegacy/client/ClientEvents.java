@@ -39,6 +39,21 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import org.lwjgl.input.Keyboard;
+import com.exiledradio.sbackpackslegacy.backpack.WornBackpack;
+import com.exiledradio.sbackpackslegacy.client.gui.GuiBackpack;
+import com.exiledradio.sbackpackslegacy.common.gui.BackpackContext;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.inventory.GuiContainerCreative;
+import net.minecraft.client.gui.inventory.GuiInventory;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.event.GuiOpenEvent;
+import net.minecraftforge.client.event.GuiScreenEvent;
+import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber(modid = SophisticatedBackpacksLegacy.MODID, value = Side.CLIENT)
 public final class ClientEvents {
@@ -49,6 +64,9 @@ public final class ClientEvents {
             KeyConflictContext.IN_GAME, Keyboard.KEY_NONE, "keybind.sbackpackslegacy.category");
 
     private static final int TINT_CLOTH = 0;
+    private static boolean pendingOpenFromInventory;
+    @Nullable
+    private static GuiScreen openedFromInventory;
     private static final int TINT_BORDER = 1;
 
     private ClientEvents() {}
@@ -150,6 +168,77 @@ public final class ClientEvents {
         while (TOOL_SWAP.isPressed()) {
             sendToolSwapMessage(mc);
         }
+    }
+
+    /**
+     * The open-backpack key in an inventory screen: over a backpack in the player's inventory (or
+     * worn slot) it opens that backpack, as the original does. In a backpack opened that way, the
+     * key pressed anywhere else goes back to the inventory.
+     */
+    @SubscribeEvent
+    public static void onGuiKeyboardInput(GuiScreenEvent.KeyboardInputEvent.Pre event) {
+        if (!Keyboard.getEventKeyState() || !(event.getGui() instanceof GuiContainer)) {
+            return;
+        }
+        int key = Keyboard.getEventKey() == 0 ? Keyboard.getEventCharacter() + 256 : Keyboard.getEventKey();
+        if (!OPEN_BACKPACK.isActiveAndMatches(key)) {
+            return;
+        }
+        Minecraft mc = Minecraft.getMinecraft();
+        GuiContainer gui = (GuiContainer) event.getGui();
+        boolean inventoryScreen = gui instanceof GuiInventory
+                || gui instanceof GuiContainerCreative && !hasSearchBar((GuiContainerCreative) gui);
+        boolean backpackScreen = gui instanceof GuiBackpack;
+        if (mc.player == null || !inventoryScreen && !backpackScreen || !mc.player.inventory.getItemStack().isEmpty()) {
+            return;
+        }
+        Slot hovered = gui.getSlotUnderMouse();
+        ItemStack stack = hovered == null ? ItemStack.EMPTY : hovered.getStack();
+        BackpackContext target = stack.getItem() instanceof BackpackItem ? locate(mc.player, stack) : null;
+        if (target != null) {
+            event.setCanceled(true);
+            if (backpackScreen && ((BackpackContainer) gui.inventorySlots).getOpenedStack() == stack) {
+                return;
+            }
+            pendingOpenFromInventory = inventoryScreen || backpackScreen && openedFromInventory == gui;
+            PacketHandler.CHANNEL.sendToServer(new OpenBackpackMessage(BackpackContext.InventoryKind.values()[target.getX()], target.getY()));
+        } else if (backpackScreen && openedFromInventory == gui) {
+            event.setCanceled(true);
+            mc.player.closeScreen();
+            // Switches itself to the creative inventory in creative mode.
+            mc.displayGuiScreen(new GuiInventory(mc.player));
+        }
+    }
+
+    /** A creative tab with a search bar takes every key, K included. */
+    private static boolean hasSearchBar(GuiContainerCreative gui) {
+        int index = gui.getSelectedTabIndex();
+        return index < 0 || index >= CreativeTabs.CREATIVE_TAB_ARRAY.length || CreativeTabs.CREATIVE_TAB_ARRAY[index].hasSearchBar();
+    }
+
+    /** Where the hovered stack sits in the player's inventory or worn slots, matched by identity. */
+    @Nullable
+    private static BackpackContext locate(EntityPlayer player, ItemStack stack) {
+        for (int slot = 0; slot < player.inventory.mainInventory.size(); slot++) {
+            if (player.inventory.mainInventory.get(slot) == stack) {
+                return new BackpackContext.Item(BackpackContext.InventoryKind.MAIN, slot);
+            }
+        }
+        if (player.inventory.armorInventory.get(EntityEquipmentSlot.CHEST.getIndex()) == stack) {
+            return new BackpackContext.Item(BackpackContext.InventoryKind.ARMOR, 0);
+        }
+        if (player.inventory.offHandInventory.get(0) == stack) {
+            return new BackpackContext.Item(BackpackContext.InventoryKind.OFFHAND, 0);
+        }
+        WornBackpack worn = WornBackpack.find(player);
+        return worn != null && worn.getBackpack() == stack ? worn.getContext() : null;
+    }
+
+    /** Remembers whether the backpack screen about to open was asked for from the inventory screen. */
+    @SubscribeEvent
+    public static void onGuiOpen(GuiOpenEvent event) {
+        openedFromInventory = pendingOpenFromInventory && event.getGui() instanceof GuiBackpack ? event.getGui() : null;
+        pendingOpenFromInventory = false;
     }
 
     private static void sendToolSwapMessage(Minecraft mc) {
