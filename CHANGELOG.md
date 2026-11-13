@@ -1,9 +1,10 @@
 # Changelog
 
-## 1.1.3 (2026-11-12)
+## 1.2.0 (2026-11-12)
 
 **Requires Sophisticated Core Legacy 1.2.0 or later.**
 
+- **Settings screen:** this mod's settings are in Sophisticated Core's settings screen (Config button in Mods). The .cfg file doesn't change.
 - Fixed a netherite backpack made on a smithing table (from mods that add one with netherite upgrades) keeping the diamond backpack's slot counts. It now gets the netherite backpack's slots and upgrade slots, as the crafting recipe gives.
 - Big backpacks scroll their rows when the screen is taller than the window (from Core's fix; needs that Core).
 
