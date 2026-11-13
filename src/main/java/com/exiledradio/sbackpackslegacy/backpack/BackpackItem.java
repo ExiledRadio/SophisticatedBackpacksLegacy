@@ -256,6 +256,10 @@ public class BackpackItem extends Item {
             return;
         }
         BackpackWrapper wrapper = CapabilityBackpackWrapper.get(stack);
+        if (wrapper != null && com.exiledradio.sbackpackslegacy.compat.retro.RetroBackpackImporter.hasRetroData(stack)) {
+            // A converted Retro backpack: bring its contents and upgrades over now, so they tick.
+            wrapper.getOrCreateContentsUuid();
+        }
         // Only backpacks that have been opened have contents (and so possibly upgrades) to tick.
         if (wrapper == null || wrapper.getContentsUuid() == null) {
             return;

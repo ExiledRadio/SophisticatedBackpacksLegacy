@@ -60,6 +60,7 @@ public final class ModContent {
             event.getRegistry().register(new BackpackBlock(tier));
         }
         GameRegistry.registerTileEntity(BackpackTileEntity.class, new ResourceLocation(SophisticatedBackpacksLegacy.MODID, "backpack"));
+        com.exiledradio.sbackpackslegacy.compat.retro.RetroBackpacksCompat.registerTileEntity();
     }
 
     @SubscribeEvent

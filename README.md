@@ -20,6 +20,7 @@ the original mod.
 - Curios support is replaced by Baubles (body slot; BaublesEX too) and Thut's Wearables (back slot).
 - The top backpack is a Nether Star backpack. The original 1.20's copper and netherite backpacks (GPL source, 1.20.x branch at bafaeb5) are listed and craftable only when another mod adds copper or netherite.
 - The Smoking, Blasting and Stonecutter upgrades (and the auto versions) are listed and craftable only when another mod adds a smoker, blast furnace or stonecutter (Future MC, VillagerBackport and others). Smoking cooks whatever smelts into food and blasting ores and whatever smelts into an ingot or gem, plus Future MC's own lists; the stonecutter shows VillagerBackport's and Future MC's stonecutter recipes.
+- Worlds can move over from Retro Sophisticated Backpacks (another 1.12.2 port): with it removed, its backpacks, upgrades and placed backpacks turn into this mod's, contents and settings included.
 
 See [PLAN.md](PLAN.md) for the full porting plan.
 

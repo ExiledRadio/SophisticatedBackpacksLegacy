@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.0 (2026-11-08)
+
+- **Open a backpack from your inventory:** hover over a backpack in your inventory (survival or creative) and press the open-backpack key, as in the original. It works on backpacks in your main inventory, hotbar, offhand, chest slot and Baubles/Wearables slot. Inside a backpack opened this way, the key over another backpack in your inventory switches to it, and pressed anywhere else goes back to your inventory.
+- **Moving from Retro Sophisticated Backpacks:** remove Retro Sophisticated Backpacks, keep this mod, and its backpacks and upgrades turn into these, wherever they are: player inventories, Baubles, chests and other containers, backpacks inside backpacks, and placed backpacks. Contents, upgrades, colors, memory and no-sort slots and the sort setting come along, and upgrades keep their filters and settings. Nothing happens while both mods are installed.
+  - Retro's obsidian backpack becomes the Nether Star backpack.
+  - Stack upgrades go by multiplier: Retro's starter tier and tiers 1-3 (x2 to x16) become tiers 1-4 here. Retro's tier 4 (x32) becomes tier 4 (x16) and its exponential upgrade becomes tier 1; stacks bigger than the new limit spill into empty slots, and anything still left stays in its slot rather than being lost.
+  - A backpack keeps at least as many slots as it had in Retro.
+
 ## 1.1.2 (2026-10-30)
 
 - **BaublesEX:** a backpack worn in a BaublesEX slot now counts as worn: the open keybind, the backpack on your back, upgrades and Merge Backpacks all find it. BaublesEX lays out its slots from its config, and the backpack used to be looked for only in classic Baubles' fixed body slot.

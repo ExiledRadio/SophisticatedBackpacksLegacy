@@ -132,6 +132,10 @@ public class DevCommand extends CommandBase {
             }
             case "show": {
                 IItemHandler handler = handler(world, pos);
+                if (args.length >= 5) {
+                    reply(sender, describeStack(handler.getStackInSlot(parseInt(args[4], 0, handler.getSlots() - 1))));
+                    return;
+                }
                 StringBuilder out = new StringBuilder("Show " + pos + ":");
                 for (int slot = 0; slot < handler.getSlots(); slot++) {
                     ItemStack stack = handler.getStackInSlot(slot);
@@ -173,6 +177,39 @@ public class DevCommand extends CommandBase {
         BackpackContext context = worn.getContext();
         String kind = context.getGuiId() == BackpackContext.GUI_ITEM ? BackpackContext.InventoryKind.values()[context.getX()].name() : "gui " + context.getGuiId();
         return "found " + kind + " slot " + context.getY() + " chestSlot=" + worn.isInChestSlot();
+    }
+
+    /** {@code show x y z slot}: one stack in a container; a backpack's contents, upgrades and settings. */
+    private static String describeStack(ItemStack stack) {
+        BackpackWrapper wrapper = com.exiledradio.sbackpackslegacy.api.CapabilityBackpackWrapper.get(stack);
+        if (wrapper == null) {
+            return stack.getCount() + "x" + stack.getItem().getRegistryName() + " tag=" + stack.getTagCompound();
+        }
+        StringBuilder out = new StringBuilder(String.valueOf(stack.getItem().getRegistryName()));
+        IItemHandler inventory = wrapper.getInventoryHandler();
+        out.append(" slots=").append(inventory.getSlots()).append('/').append(wrapper.getNumberOfUpgradeSlots())
+                .append(" colors=").append(Integer.toHexString(wrapper.getClothColor())).append(',').append(Integer.toHexString(wrapper.getBorderColor()))
+                .append(" sort=").append(wrapper.getSortBy().getName()).append(" uuid=").append(wrapper.getContentsUuid()).append("\n items:");
+        for (int slot = 0; slot < inventory.getSlots(); slot++) {
+            ItemStack item = inventory.getStackInSlot(slot);
+            if (!item.isEmpty()) {
+                out.append(' ').append(slot).append('=').append(item.getCount()).append(item.getItem().getRegistryName().getPath());
+                if (item.getTagCompound() != null) {
+                    out.append(item.getTagCompound());
+                }
+            }
+        }
+        out.append(" limit(cobble)=").append(((com.exiledradio.scorelegacy.inventory.InventoryHandler) inventory).getBaseStackLimit(new ItemStack(net.minecraft.init.Blocks.COBBLESTONE)));
+        out.append("\n upgrades:");
+        IItemHandler upgrades = wrapper.getUpgradeHandler();
+        for (int slot = 0; slot < upgrades.getSlots(); slot++) {
+            ItemStack upgrade = upgrades.getStackInSlot(slot);
+            if (!upgrade.isEmpty()) {
+                out.append(' ').append(slot).append('=').append(upgrade.getItem().getRegistryName().getPath()).append(upgrade.getTagCompound());
+            }
+        }
+        out.append("\n settings: ").append(wrapper.getSettingsHandler().getNbt());
+        return out.toString();
     }
 
     private static void reply(ICommandSender sender, String text) {

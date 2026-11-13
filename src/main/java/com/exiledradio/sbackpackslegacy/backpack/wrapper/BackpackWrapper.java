@@ -27,6 +27,7 @@ import com.exiledradio.scorelegacy.util.IItemHandlerSimpleInserter;
 
 import javax.annotation.Nullable;
 import java.util.UUID;
+import com.exiledradio.sbackpackslegacy.compat.retro.RetroBackpackImporter;
 
 /**
  * Everything about one backpack stack: its contents (via {@link BackpackStorage}), its slot
@@ -222,6 +223,10 @@ public class BackpackWrapper implements IStorageWrapper {
         if (uuid != null || !isServerSide()) {
             return uuid;
         }
+        if (RetroBackpackImporter.hasRetroData(backpack)) {
+            // A converted Retro Sophisticated Backpacks backpack: its contents come along.
+            return RetroBackpackImporter.importBackpack(this);
+        }
         uuid = UUID.randomUUID();
         getOrCreateTag().setUniqueId(CONTENTS_UUID_TAG, uuid);
         contents = null;
@@ -270,9 +275,14 @@ public class BackpackWrapper implements IStorageWrapper {
      * hands out a free copy (creative mode), never in survival paths.
      */
     public ItemStack cloneBackpack() {
+        // A waiting Retro import lands first, so the copy gets the items rather than the same import.
+        if (RetroBackpackImporter.hasRetroData(backpack)) {
+            getOrCreateContentsUuid();
+        }
         ItemStack copy = backpack.copy();
         NBTTagCompound tag = copy.getTagCompound();
         if (tag != null) {
+            tag.removeTag(RetroBackpackImporter.RETRO_BACKPACK_TAG);
             tag.removeTag(CONTENTS_UUID_TAG + "Most");
             tag.removeTag(CONTENTS_UUID_TAG + "Least");
         }
