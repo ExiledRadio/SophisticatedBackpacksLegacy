@@ -17,7 +17,7 @@ import org.apache.logging.log4j.Logger;
         modid = SophisticatedBackpacksLegacy.MODID,
         name = SophisticatedBackpacksLegacy.NAME,
         version = SophisticatedBackpacksLegacy.VERSION,
-        dependencies = "required-after:" + SophisticatedCoreLegacy.MODID + "@[1.1.0,)"
+        dependencies = "required-after:" + SophisticatedCoreLegacy.MODID + "@[1.2.0,)"
         // No acceptableRemoteVersions: backpack GUIs and upgrades sync over custom packets,
         // so client and server must both have the mod.
 )
@@ -64,6 +64,7 @@ public class SophisticatedBackpacksLegacy {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         com.exiledradio.scorelegacy.compat.MaterialCompat.loadCompatRecipes(MODID);
+        com.exiledradio.sbackpackslegacy.compat.SmithingCompat.postInit();
         proxy.postInit(event);
     }
 }

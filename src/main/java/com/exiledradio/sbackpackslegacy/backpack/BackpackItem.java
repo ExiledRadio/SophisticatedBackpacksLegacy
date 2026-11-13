@@ -340,4 +340,27 @@ public class BackpackItem extends Item {
     public boolean isValidArmor(ItemStack stack, EntityEquipmentSlot armorType, Entity entity) {
         return armorType == EntityEquipmentSlot.CHEST && entity instanceof EntityLivingBase;
     }
+
+    /**
+     * On a smithing table's netherite backpack (see {@link com.exiledradio.sbackpackslegacy.compat.SmithingCompat}).
+     * The table copies the old backpack's NBT, slot counts included, so taking the result gives it
+     * this tier's counts, as the crafting recipe does.
+     */
+    public static final String SMITHED_TAG = "sbackpackslegacySmithed";
+
+    @Override
+    public void onCreated(@Nonnull ItemStack stack, @Nonnull World world, @Nonnull net.minecraft.entity.player.EntityPlayer player) {
+        super.onCreated(stack, world, player);
+        net.minecraft.nbt.NBTTagCompound tag = stack.getTagCompound();
+        if (tag != null && tag.hasKey(SMITHED_TAG)) {
+            tag.removeTag(SMITHED_TAG);
+            if (tag.isEmpty()) {
+                stack.setTagCompound(null);
+            }
+            BackpackWrapper wrapper = CapabilityBackpackWrapper.get(stack);
+            if (wrapper != null) {
+                wrapper.setSlotNumbers(getTier().getInventorySlots(), getTier().getUpgradeSlots());
+            }
+        }
+    }
 }
