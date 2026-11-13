@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Big backpacks scroll their rows when the screen is taller than the window (from Core's fix; needs that Core).
+
 ## 1.1.2 (2026-10-30)
 
 - **BaublesEX:** a backpack worn in a BaublesEX slot now counts as worn: the open keybind, the backpack on your back, upgrades and Merge Backpacks all find it. BaublesEX lays out its slots from its config, and the backpack used to be looked for only in classic Baubles' fixed body slot.
