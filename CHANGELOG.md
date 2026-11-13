@@ -5,6 +5,7 @@
 **Requires Sophisticated Core Legacy 1.2.0 or later.**
 
 - Fixed a netherite backpack made on a smithing table (from mods that add one with netherite upgrades) keeping the diamond backpack's slot counts. It now gets the netherite backpack's slots and upgrade slots, as the crafting recipe gives.
+- Big backpacks scroll their rows when the screen is taller than the window (from Core's fix; needs that Core).
 
 ## 1.1.2 (2026-10-30)
 
