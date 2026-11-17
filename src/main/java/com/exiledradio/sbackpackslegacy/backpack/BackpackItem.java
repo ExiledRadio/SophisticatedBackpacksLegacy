@@ -255,6 +255,7 @@ public class BackpackItem extends Item {
         if (world.isRemote || !(entity instanceof EntityPlayer)) {
             return;
         }
+        applySmithed(stack);
         BackpackWrapper wrapper = CapabilityBackpackWrapper.get(stack);
         if (wrapper != null && com.exiledradio.sbackpackslegacy.compat.retro.RetroBackpackImporter.hasRetroData(stack)) {
             // A converted Retro backpack: bring its contents and upgrades over now, so they tick.
@@ -355,6 +356,15 @@ public class BackpackItem extends Item {
     @Override
     public void onCreated(@Nonnull ItemStack stack, @Nonnull World world, @Nonnull net.minecraft.entity.player.EntityPlayer player) {
         super.onCreated(stack, world, player);
+        applySmithed(stack);
+    }
+
+    /**
+     * Gives a smithed backpack this tier's slot counts, once. Called on taking the result and again on
+     * the backpack's first tick in an inventory, since a table may call {@link #onCreated} on a copy
+     * of what the player gets (Trails &amp; Tales' does).
+     */
+    private void applySmithed(ItemStack stack) {
         net.minecraft.nbt.NBTTagCompound tag = stack.getTagCompound();
         if (tag != null && tag.hasKey(SMITHED_TAG)) {
             tag.removeTag(SMITHED_TAG);
