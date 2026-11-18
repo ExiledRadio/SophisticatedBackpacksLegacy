@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.2.1 (2026-11-17)
 
 - Fixed the netherite backpack made on Trails & Tales Backport's smithing table (and shift-clicked off Nether Update Backport's) still keeping the diamond backpack's slot counts. It now gets the netherite slots on its first tick in your inventory.
 
